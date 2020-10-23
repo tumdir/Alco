@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rigidbody;
 
     [SerializeField]
-    private float _speed;
-    private Vector3 _rightSpeed;
+    private float _speed, _rightSpeed;
+    private Vector3 _moveVector;
     private bool isDead;
 
     private void Start()
@@ -21,11 +21,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            _rightSpeed = Vector3.left * _speed;
+            _moveVector = Vector3.left * _rightSpeed;
         }
         else
         {
-            _rightSpeed = Vector3.right * _speed;
+            _moveVector = Vector3.right * _rightSpeed;
         }
     }
 
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isDead == false)
         {
-            _rigidbody.MovePosition(transform.position + (Vector3.forward * _speed + _rightSpeed) * Time.fixedDeltaTime);
+            _rigidbody.MovePosition(transform.position + (Vector3.forward * _speed + _moveVector) * Time.fixedDeltaTime);
             
         }
     }

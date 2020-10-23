@@ -21,11 +21,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            _rightSpeed = Vector3.right * _speed;
+            _rightSpeed = Vector3.left * _speed;
         }
         else
         {
-            _rightSpeed = -Vector3.right * _speed;
+            _rightSpeed = Vector3.right * _speed;
         }
     }
 
@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         if (isDead == false)
         {
             _rigidbody.MovePosition(transform.position + (Vector3.forward * _speed + _rightSpeed) * Time.fixedDeltaTime);
+            
         }
     }
 

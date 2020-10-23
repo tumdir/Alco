@@ -14,6 +14,7 @@ public class CamerFallow : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        transform.position = target.position - offset;
+        transform.position = Vector3.Lerp(transform.position, target.position - offset, Time.fixedDeltaTime * 2f);
+        
     }
 }
